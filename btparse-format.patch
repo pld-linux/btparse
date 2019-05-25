@@ -1,0 +1,64 @@
+--- btparse-0.34/src/error.c.orig	1999-11-29 02:13:10.000000000 +0100
++++ btparse-0.34/src/error.c	2019-05-24 22:15:12.326349111 +0200
+@@ -88,7 +88,7 @@
+ 
+    if (err->filename)
+    {
+-      fprintf (stderr, err->filename);
++      fputs (err->filename, stderr);
+       something_printed = TRUE;
+    }
+    if (err->line > 0)                   /* going to print a line number? */
+@@ -111,7 +111,7 @@
+    {
+       if (something_printed)
+          fprintf (stderr, ", ");
+-      fprintf (stderr, name);
++      fputs (name, stderr);
+       something_printed = TRUE;
+    }
+ 
+--- btparse-0.34/src/bibtex_ast.c.orig	1999-11-29 02:13:10.000000000 +0100
++++ btparse-0.34/src/bibtex_ast.c	2019-05-24 22:16:12.902687608 +0200
+@@ -57,7 +57,7 @@
+ void dump_ast (char *msg, AST *root)
+ {
+    if (msg != NULL)
+-      printf (msg);
++      fputs (msg, stdout);
+    dump (root, 0);
+    printf ("\n");
+ }
+--- btparse-0.34/progs/bibparse.c.orig	1998-03-14 17:39:16.000000000 +0100
++++ btparse-0.34/progs/bibparse.c	2019-05-24 22:17:33.802249337 +0200
+@@ -299,8 +299,8 @@
+    }
+    else
+    {
+-      fprintf (stderr, Usage);
+-      fprintf (stderr, Help);
++      fputs (Usage, stderr);
++      fputs (Help, stderr);
+       fprintf (stderr, "Not enough arguments\n");
+       exit (1);
+    }
+--- btparse-0.34/progs/dumpnames.c.orig	1999-11-29 03:14:14.000000000 +0100
++++ btparse-0.34/progs/dumpnames.c	2019-05-24 22:18:34.741919199 +0200
+@@ -15,6 +15,8 @@
+ -------------------------------------------------------------------------- */
+ 
+ #include <stdio.h>
++#include <stdlib.h>
++#include <string.h>
+ #include "btparse.h"
+ 
+ char *Usage = "usage: dumpnames file\n";
+@@ -139,7 +141,7 @@
+    
+    if (argc != 2) 
+    {
+-      fprintf (stderr, Usage);
++      fputs (Usage, stderr);
+       fprintf (stderr, "Wrong number of arguments\n");
+       exit (1);
+    }
