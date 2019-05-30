@@ -1,3 +1,4 @@
+# NOTE: for versions >= 0.36 see perl-Text-BibTeX.spec
 #
 # Conditional build:
 %bcond_without	static_libs	# don't build static libraries
@@ -6,7 +7,7 @@ Summary:	C library to parse BibTeX files
 Summary(pl.UTF-8):	Biblioteka C do analizy plików BibTeXa
 Name:		btparse
 Version:	0.34
-Release:	1
+Release:	1.1
 License:	LGPL v2+
 Group:		Libraries
 Source0:	http://www.gerg.ca/software/btOOL/%{name}-%{version}.tar.gz
